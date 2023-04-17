@@ -9,6 +9,7 @@
   },
   "MiniChefV2": null,
   "PangoChef": null,
+  "LiquidityThresholdETH": "10",
   "StablePairs": [
     "0xc40f5a00eb6a298709b6334dcd646a13c8a1fc7f"
   ],
