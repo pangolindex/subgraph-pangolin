@@ -1,0 +1,37 @@
+{
+  "network": "fuji",
+  "WETH": "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
+  "PNG": "0xaf5d473b3f8f96a5b21c6bbb97e09b491335acb9",
+  "Router": "0x688d21b0b8dc35971af58cff1f7bf65639937860",
+  "Factory": {
+    "address": "0x2a496ec9e9be22e66c61d4eb9d316beaee31a77b",
+    "startBlock": 9736544
+  },
+  "MiniChefV2": {
+    "address": "0x2572eca2be804f7799e3f3ef1d1db60f512a0ae3",
+    "startBlock": 9736553
+  },
+  "PangoChef": null,
+  "LiquidityThresholdETH": "10",
+  "StablePairs": [
+
+  ],
+  "WhitelistTokens": [
+    "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
+    "0xaf5d473b3f8f96a5b21c6bbb97e09b491335acb9"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
+      "symbol": "WAVAX",
+      "name": "Wrapped AVAX",
+      "decimals": 18
+    },
+    {
+      "address": "0xaf5d473b3f8f96a5b21c6bbb97e09b491335acb9",
+      "symbol": "PNG",
+      "name": "Pangolin",
+      "decimals": 18
+    }
+  ]
+}

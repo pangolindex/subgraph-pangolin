@@ -1,0 +1,23 @@
+{
+  "network": "flare",
+  "TrackedAccounts": [
+    "0xaa7815897586708c157b829300af34c508445e8f",
+    "0xe688399009a1c283fad889d3cedf6fff4d685d51"
+  ],
+  "TrackedTokens": [
+    {
+      "address": "0xb5010d5eb31aa8776b52c7394b76d6d627501c73",
+      "symbol": "PFL",
+      "name": "Pangolin Flare",
+      "decimals": 18,
+      "startBlock": 3922671
+    },
+    {
+      "address": "0x1d80c49bbbcd1c0911346656b529df9e5c2f783d",
+      "symbol": "WFLR",
+      "name": "Wrapped Flare",
+      "decimals": 18,
+      "startBlock": 3977853
+    }
+  ]
+}

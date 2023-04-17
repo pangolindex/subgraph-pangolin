@@ -1,0 +1,24 @@
+{
+  "name": "subgraph-pangolin",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "template": "node src/templateExecutor.js",
+
+    "codegen": "graph codegen",
+    "build": "graph codegen && graph build",
+
+    "create": "graph create --node https://graph.pangolin.network/admin",
+    "remove": "graph remove --node https://graph.pangolin.network/admin",
+    "deploy": "graph deploy --node https://graph.pangolin.network/admin --ipfs https://graph.pangolin.network/ipfs",
+
+    "create:local": "graph create --node http://localhost:8020",
+    "remove:local": "graph remove --node http://localhost:8020",
+    "deploy:local": "graph deploy --node http://localhost:8020 --ipfs http://localhost:5001"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.44.0",
+    "@graphprotocol/graph-ts": "0.29.3",
+    "mustache": "4.2.0"
+  }
+}

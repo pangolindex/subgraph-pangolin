@@ -1,0 +1,63 @@
+{
+  "network": "avalanche",
+  "TrackedAccounts": [
+    "0xa4cb6e1971ed8a1f76d9e8d50a5fc56dfa5cc1e6",
+    "0xcf4bd552b6dbded8c289bbb8981591ab3aebdfaa",
+    "0x831a3c1613722925cf535d794cde271028150e8d",
+    "0x66c048d27afb5ee59e4c07101a483654246a4eda",
+    "0x6b210fe8fd44aae81ab6cc95480880da92de6d8b",
+    "0x5f0198f5a1cd918e35aa8f17314b9be23e0461bf",
+    "0x0a9aaeb613e9f5a09f2b0c74fcb0740e6cb9884a"
+  ],
+  "TrackedTokens": [
+    {
+      "address": "0x60781c2586d68229fde47564546784ab3faca982",
+      "symbol": "PNG",
+      "name": "Pangolin",
+      "decimals": 18,
+      "startBlock": 2152467
+    },
+    {
+      "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "decimals": 6,
+      "startBlock": 9980992
+    },
+    {
+      "address": "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+      "symbol": "USDC.e",
+      "name": "USD Coin",
+      "decimals": 6,
+      "startBlock": 9178911
+    },
+    {
+      "address": "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7",
+      "symbol": "USDt",
+      "name": "TetherToken",
+      "decimals": 6,
+      "startBlock": 15243249
+    },
+    {
+      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
+      "symbol": "DAI.e",
+      "name": "Dai Stablecoin",
+      "decimals": 18,
+      "startBlock": 2749892
+    },
+    {
+      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      "symbol": "WAVAX",
+      "name": "Wrapped AVAX",
+      "decimals": 18,
+      "startBlock": 4018939
+    },
+    {
+      "address": "0xc7198437980c041c805a1edcba50c1ce5db95118",
+      "symbol": "USDT.e",
+      "name": "Tether USD",
+      "decimals": 6,
+      "startBlock": 9156261
+    }
+  ]
+}

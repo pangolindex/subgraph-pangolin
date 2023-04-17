@@ -1,0 +1,26 @@
+{
+  "network": "songbird",
+  "TrackedAccounts": [
+    "0xe18dfc20ede326930d11b3316e92bdc1f606dc94",
+    "0x3602a7b68f28a2f9f2bcf3d11de936b867fe0d68",
+    "0x59fcf99d02f3055d2109b1951d166788efc0ea47",
+    "0x6b210fe8fd44aae81ab6cc95480880da92de6d8b",
+    "0x5f0198f5a1cd918e35aa8f17314b9be23e0461bf"
+  ],
+  "TrackedTokens": [
+    {
+      "address": "0xb2987753d1561570f726aa373f48e77e27aa5ff4",
+      "symbol": "PSB",
+      "name": "Pangolin Songbird",
+      "decimals": 18,
+      "startBlock": 22769074
+    },
+    {
+      "address": "0x02f0826ef6ad107cfc861152b32b52fd11bab9ed",
+      "symbol": "WSGB",
+      "name": "Wrapped Songbird",
+      "decimals": 18,
+      "startBlock": 26961429
+    }
+  ]
+}

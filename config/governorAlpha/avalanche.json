@@ -1,0 +1,7 @@
+{
+  "network": "avalanche",
+  "GovernorAlpha": {
+    "address": "0xb0ff2b1047d9e8d294c2ed798fae3fa817f43ee1",
+    "startBlock": 920834
+  }
+}

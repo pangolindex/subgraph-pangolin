@@ -1,0 +1,31 @@
+# Generated from mustache template for network: {{network}}
+
+specVersion: 0.0.4
+description: Historical account for financial reconciliation.
+repository: https://github.com/pangolindex/subgraph-pangolin
+schema:
+  file: ./schema.graphql
+dataSources:
+  {{#TrackedTokens}}
+  - kind: ethereum/contract
+    name: {{symbol}}
+    network: {{network}}
+    source:
+      address: "{{address}}"
+      abi: ERC20
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/accounting/erc20.output.ts
+      entities:
+        - Token
+        - TokenTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  {{/TrackedTokens}}

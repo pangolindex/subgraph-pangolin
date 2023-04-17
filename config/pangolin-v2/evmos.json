@@ -1,0 +1,26 @@
+{
+  "network": "evmos",
+  "WETH": "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
+  "PNG": "0x0000000000000000000000000000000000000000",
+  "Router": "0x3dc36e8244e9a9aef85129475015db6f4abaa3b8",
+  "Factory": {
+    "address": "0x6169cd307be7e24152df23a7a945a1ea3ec7b438",
+    "startBlock": 10526552
+  },
+  "MiniChefV2": null,
+  "PangoChef": null,
+  "StablePairs": [
+    "0xc40f5a00eb6a298709b6334dcd646a13c8a1fc7f"
+  ],
+  "WhitelistTokens": [
+    "0xd4949664cd82660aae99bedc034a0dea8a0bd517"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
+      "symbol": "EVMOS",
+      "name": "Evmos Staking Coin",
+      "decimals": 18
+    }
+  ]
+}

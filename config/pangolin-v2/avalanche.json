@@ -1,0 +1,38 @@
+{
+  "network": "avalanche",
+  "WETH": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+  "PNG": "0x60781c2586d68229fde47564546784ab3faca982",
+  "Router": "0xe54ca86531e17ef3616d22ca28b0d458b6c89106",
+  "Factory": {
+    "address": "0xefa94de7a4656d787667c749f7e1223d71e9fd88",
+    "startBlock": 771980
+  },
+  "MiniChefV2": {
+    "address": "0x1f806f7c8ded893fd3cae279191ad7aa3798e928",
+    "startBlock": 6987996
+  },
+  "PangoChef": null,
+  "LiquidityThresholdETH": "10",
+  "StablePairs": [
+    "0xba09679ab223c6bdaf44d45ba2d7279959289ab0",
+    "0xe28984e1ee8d431346d32bec9ec800efb643eef4"
+  ],
+  "WhitelistTokens": [
+    "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+    "0x60781c2586d68229fde47564546784ab3faca982"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      "symbol": "WAVAX",
+      "name": "Wrapped AVAX",
+      "decimals": 18
+    },
+    {
+      "address": "0xe28984e1ee8d431346d32bec9ec800efb643eef4",
+      "symbol": "PNG",
+      "name": "Pangolin",
+      "decimals": 18
+    }
+  ]
+}

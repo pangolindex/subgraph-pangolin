@@ -1,0 +1,37 @@
+# Generated from mustache template for network: {{network}}
+
+specVersion: 0.0.4
+description: Pangolin staking
+repository: https://github.com/pangolindex/subgraph-pangolin
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: StakingPositions
+    network: {{network}}
+    source:
+      address: "{{PangolinStakingPositions.address}}"
+      abi: PangolinStakingPositions
+      startBlock: {{PangolinStakingPositions.startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/stakingPositions/stakingPositions.ts
+      entities:
+        - SingleSideStaking
+        - StakingPosition
+      abis:
+        - name: PangolinStakingPositions
+          file: ./abis/stakingPositions/PangolinStakingPositions.json
+      eventHandlers:
+        - event: Staked(indexed uint256,indexed uint256,indexed uint256)
+          handler: handleStaked
+        - event: Withdrawn(indexed uint256,indexed uint256,indexed uint256)
+          handler: handleWithdrawn
+        - event: PeriodEnded()
+          handler: handlePeriodEnded
+        - event: RewardAdded(uint256)
+          handler: handleRewardAdded
+        - event: PeriodDurationUpdated(uint256)
+          handler: handlePeriodDurationUpdated

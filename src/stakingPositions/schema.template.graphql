@@ -1,0 +1,18 @@
+type SingleSideStaking @entity {
+  id: ID!
+  totalRewardAdded: BigInt!
+  rewardRate: BigInt!
+  periodDuration: BigInt!
+  periodFinish: BigInt!
+  balance: BigInt!
+  sumOfEntryTimes: BigInt!
+  lastUpdate: BigInt!
+}
+
+type StakingPosition @entity {
+  id: ID!
+  balance: BigInt!
+  sumOfEntryTimes: BigInt!
+  lastUpdate: BigInt!
+  lastDevaluation: BigInt!
+}

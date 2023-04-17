@@ -1,0 +1,20 @@
+type TokenTransfer @entity {
+    id: ID! # transaction-index
+
+    token: Token!
+
+    from: Bytes!
+    to: Bytes!
+
+    amount: BigInt!
+    hash: Bytes!
+    timestamp: BigInt!
+}
+
+type Token @entity {
+    id: Bytes!
+
+    symbol: String!
+    name: String!
+    decimals: BigInt!
+}

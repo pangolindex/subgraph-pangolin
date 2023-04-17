@@ -1,0 +1,37 @@
+{
+  "network": "songbird",
+  "WETH": "0x02f0826ef6ad107cfc861152b32b52fd11bab9ed",
+  "PNG": "0xb2987753d1561570f726aa373f48e77e27aa5ff4",
+  "Router": "0x6591cf4e1cfddecb4aa5946c033596635ba6fb0f",
+  "Factory": {
+    "address": "0xb66e62b25c42d55655a82f8ebf699f2266f329fb",
+    "startBlock": 22785162
+  },
+  "MiniChefV2": null,
+  "PangoChef": {
+    "address": "0x76489156fff6f4b89626f58386366941150642b7",
+    "startBlock": 22785205
+  },
+  "LiquidityThresholdETH": "10",
+  "StablePairs": [
+
+  ],
+  "WhitelistTokens": [
+    "0x02f0826ef6ad107cfc861152b32b52fd11bab9ed",
+    "0xb2987753d1561570f726aa373f48e77e27aa5ff4"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0x02f0826ef6ad107cfc861152b32b52fd11bab9ed",
+      "symbol": "WSGB",
+      "name": "Wrapped SGB",
+      "decimals": 18
+    },
+    {
+      "address": "0xb2987753d1561570f726aa373f48e77e27aa5ff4",
+      "symbol": "PSB",
+      "name": "Pangolin Songbird",
+      "decimals": 18
+    }
+  ]
+}
