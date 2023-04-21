@@ -1,0 +1,37 @@
+{
+  "network": "evmos-testnet",
+  "WETH": "0xcf5ef8d007a616066e5eaea0916592374a0f478d",
+  "PNG": "0x171a6a80cdddd8f69134ff0471523400f2c16abe",
+  "Router": "0x6b6d3049dd90e6ecc84f8dca55f4a847b3a63fc2",
+  "Factory": {
+    "address": "0x02fd35823a82b8f02e5f2d1a351807b9d1b38c3b",
+    "startBlock": 9306949
+  },
+  "MiniChefV2": null,
+  "PangoChef": {
+    "address": "0xa96b69ee04e33e1752b059a7a9b7c9fe2b3c93a9",
+    "startBlock": 9306972
+  },
+  "LiquidityThresholdETH": "10",
+  "StablePairs": [
+
+  ],
+  "WhitelistTokens": [
+    "0xcf5ef8d007a616066e5eaea0916592374a0f478d",
+    "0x171a6a80cdddd8f69134ff0471523400f2c16abe"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0xcf5ef8d007a616066e5eaea0916592374a0f478d",
+      "symbol": "WEVMOS",
+      "name": "Wrapped Evmos",
+      "decimals": 18
+    },
+    {
+      "address": "0x171a6a80cdddd8f69134ff0471523400f2c16abe",
+      "symbol": "evmPNG",
+      "name": "Pangolin Evmos",
+      "decimals": 18
+    }
+  ]
+}
