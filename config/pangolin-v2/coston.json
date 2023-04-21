@@ -1,0 +1,37 @@
+{
+  "network": "coston",
+  "WETH": "0x1659941d425224408c5679eeef606666c7991a8a",
+  "PNG": "0x0a8744c2a48b0e09a3e4c3a381a8e0d8d900bafe",
+  "Router": "0x6a6c605700f477e56b9542ca2a3d68b9a7edf599",
+  "Factory": {
+    "address": "0xa5d4d920cea39f0344a99b2a3c4597e10da16d88",
+    "startBlock": 4782569
+  },
+  "MiniChefV2": null,
+  "PangoChef": {
+    "address": "0xff0c4041ba52428612320cad2016d07b2e4a802d",
+    "startBlock": 4782580
+  },
+  "LiquidityThresholdETH": "10",
+  "StablePairs": [
+
+  ],
+  "WhitelistTokens": [
+    "0x1659941d425224408c5679eeef606666c7991a8a",
+    "0x0a8744c2a48b0e09a3e4c3a381a8e0d8d900bafe"
+  ],
+  "StaticTokens": [
+    {
+      "address": "0x1659941d425224408c5679eeef606666c7991a8a",
+      "symbol": "WCFLR",
+      "name": "Wrapped CostonFlare",
+      "decimals": 18
+    },
+    {
+      "address": "0x0a8744c2a48b0e09a3e4c3a381a8e0d8d900bafe",
+      "symbol": "PCT",
+      "name": "Pangolin Coston",
+      "decimals": 18
+    }
+  ]
+}
