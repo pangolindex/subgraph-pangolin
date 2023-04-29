@@ -12,6 +12,14 @@
     "remove": "graph remove --node https://graph.pangolin.network/admin",
     "deploy": "graph deploy --node https://graph.pangolin.network/admin --ipfs https://graph.pangolin.network/ipfs",
 
+    "create:evmos-main": "graph create --node https://graph-evmos-main.pangolin.network/admin",
+    "remove:evmos-main": "graph remove --node https://graph-evmos-main.pangolin.network/admin",
+    "deploy:evmos-main": "graph deploy --node https://graph-evmos-main.pangolin.network/admin --ipfs https://graph.pangolin.network/ipfs",
+
+    "create:evmos-test": "graph create --node https://graph-evmos-test.pangolin.network/admin",
+    "remove:evmos-test": "graph remove --node https://graph-evmos-test.pangolin.network/admin",
+    "deploy:evmos-test": "graph deploy --node https://graph-evmos-test.pangolin.network/admin --ipfs https://graph.pangolin.network/ipfs",
+
     "create:local": "graph create --node http://localhost:8020",
     "remove:local": "graph remove --node http://localhost:8020",
     "deploy:local": "graph deploy --node http://localhost:8020 --ipfs http://localhost:5001"

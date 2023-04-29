@@ -1,0 +1,34 @@
+{
+  "network": "evmos-testnet",
+  "WETH": "0xcf5ef8d007a616066e5eaea0916592374a0f478d",
+  "PNG": "0x171a6a80cdddd8f69134ff0471523400f2c16abe",
+  "Factory": {
+    "address": "0x5eba6f88517dcb2a203e211777665fb1ada3e6f4",
+    "startBlock": 0
+  },
+  "NonfungiblePositionManager": {
+    "address": "0x4aaf5643c4049f457c1921671094403b5532e664",
+    "startBlock": 0
+  },
+  "LiquidityThresholdETH": "10",
+  "StablePools": [
+
+  ],
+  "WhitelistTokens": [
+
+  ],
+  "StaticTokens": [
+    {
+      "address": "0xcf5ef8d007a616066e5eaea0916592374a0f478d",
+      "symbol": "WEVMOS",
+      "name": "Wrapped Evmos",
+      "decimals": 18
+    },
+    {
+      "address": "0x171a6a80cdddd8f69134ff0471523400f2c16abe",
+      "symbol": "evmPNG",
+      "name": "Pangolin Evmos",
+      "decimals": 18
+    }
+  ]
+}
