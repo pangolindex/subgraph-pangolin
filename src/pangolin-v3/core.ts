@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { BigDecimal, BigInt, ethereum } from '@graphprotocol/graph-ts'
+import { BigDecimal, BigInt, ethereum, log } from '@graphprotocol/graph-ts'
 import { Bundle, Burn, Factory, Mint, Pool, Swap, Tick, Token } from '../../generated/schema'
 import { Pool as PoolABI } from '../../generated/templates/Pool/Pool'
 import {
@@ -273,6 +273,7 @@ export function handleSwap(event: SwapEvent): void {
   let bundle = Bundle.load('1')!
   let factory = Factory.load(FACTORY_ADDRESS)!
   let pool = Pool.load(event.address.toHexString())!
+  log.info('pool: {}', [pool.id])
 
   // hot fix for bad pricing
   // if (pool.id == '0x9663f2ca0454accad3e094448ea6f77443880454') {
@@ -283,10 +284,13 @@ export function handleSwap(event: SwapEvent): void {
   let token1 = Token.load(pool.token1)!
 
   let oldTick = pool.tick!
+  log.info('oldTick: {}', [oldTick.toString()])
 
   // amounts - 0/1 are token deltas: can be positive or negative
   let amount0 = convertTokenToDecimal(event.params.amount0, token0.decimals)
+  log.info('amount0: {}', [amount0.toString()])
   let amount1 = convertTokenToDecimal(event.params.amount1, token1.decimals)
+  log.info('amount1: {}', [amount1.toString()])
 
   // need absolute amounts for volume
   let amount0Abs = amount0
@@ -299,9 +303,13 @@ export function handleSwap(event: SwapEvent): void {
   }
 
   let amount0ETH = amount0Abs.times(token0.derivedETH)
+  log.info('amount0ETH: {}', [amount0ETH.toString()])
   let amount1ETH = amount1Abs.times(token1.derivedETH)
+  log.info('amount1ETH: {}', [amount1ETH.toString()])
   let amount0USD = amount0ETH.times(bundle.ethPriceUSD)
+  log.info('amount0USD: {}', [amount0USD.toString()])
   let amount1USD = amount1ETH.times(bundle.ethPriceUSD)
+  log.info('amount1USD: {}', [amount1USD.toString()])
 
   // get amount that should be tracked only - div 2 because cant count both input and output as volume
   let amountTotalUSDTracked = getTrackedAmountUSD(amount0Abs, token0 as Token, amount1Abs, token1 as Token).div(
@@ -311,7 +319,9 @@ export function handleSwap(event: SwapEvent): void {
   let amountTotalUSDUntracked = amount0USD.plus(amount1USD).div(BigDecimal.fromString('2'))
 
   let feesETH = amountTotalETHTracked.times(pool.feeTier.toBigDecimal()).div(BigDecimal.fromString('1000000'))
+  log.info('feesETH: {}', [feesETH.toString()])
   let feesUSD = amountTotalUSDTracked.times(pool.feeTier.toBigDecimal()).div(BigDecimal.fromString('1000000'))
+  log.info('feesUSD: {}', [feesUSD.toString()])
 
   // global updates
   factory.txCount = factory.txCount.plus(BI_1)
@@ -358,15 +368,19 @@ export function handleSwap(event: SwapEvent): void {
 
   // updated pool ratess
   let prices = sqrtPriceX96ToTokenPrices(pool.sqrtPrice, token0 as Token, token1 as Token)
+  log.info('prices: {}', [prices[0].toString(), prices[1].toString()])
   pool.token0Price = prices[0]
   pool.token1Price = prices[1]
   pool.save()
 
   // update USD pricing
   bundle.ethPriceUSD = getEthPriceInUSD()
+  log.info('bundle.ethPriceUSD: {}', [bundle.ethPriceUSD.toString()])
   bundle.save()
   token0.derivedETH = findEthPerToken(token0 as Token)
+  log.info('token0.derivedETH: {}', [token0.derivedETH.toString()])
   token1.derivedETH = findEthPerToken(token1 as Token)
+  log.info('token1.derivedETH: {}', [token1.derivedETH.toString()])
 
   /**
    * Things afffected by new USD rates
@@ -374,13 +388,19 @@ export function handleSwap(event: SwapEvent): void {
   pool.totalValueLockedETH = pool.totalValueLockedToken0
     .times(token0.derivedETH)
     .plus(pool.totalValueLockedToken1.times(token1.derivedETH))
+  log.info('pool.totalValueLockedETH: {}', [pool.totalValueLockedETH.toString()])
   pool.totalValueLockedUSD = pool.totalValueLockedETH.times(bundle.ethPriceUSD)
+  log.info('pool.totalValueLockedUSD: {}', [pool.totalValueLockedUSD.toString()])
 
   factory.totalValueLockedETH = factory.totalValueLockedETH.plus(pool.totalValueLockedETH)
+  log.info('factory.totalValueLockedETH: {}', [factory.totalValueLockedETH.toString()])
   factory.totalValueLockedUSD = factory.totalValueLockedETH.times(bundle.ethPriceUSD)
+  log.info('factory.totalValueLockedUSD: {}', [factory.totalValueLockedUSD.toString()])
 
   token0.totalValueLockedUSD = token0.totalValueLocked.times(token0.derivedETH).times(bundle.ethPriceUSD)
+  log.info('token0.totalValueLockedUSD: {}', [token0.totalValueLockedUSD.toString()])
   token1.totalValueLockedUSD = token1.totalValueLocked.times(token1.derivedETH).times(bundle.ethPriceUSD)
+  log.info('token1.totalValueLockedUSD: {}', [token1.totalValueLockedUSD.toString()])
 
   // create Swap event
   let transaction = loadTransaction(event)
@@ -403,11 +423,14 @@ export function handleSwap(event: SwapEvent): void {
   // update fee growth
   let poolContract = PoolABI.bind(event.address)
   let feeGrowthGlobal0X128 = poolContract.feeGrowthGlobal0X128()
+  log.info('feeGrowthGlobal0X128: {}', [feeGrowthGlobal0X128.toString()])
   let feeGrowthGlobal1X128 = poolContract.feeGrowthGlobal1X128()
+  log.info('feeGrowthGlobal1X128: {}', [feeGrowthGlobal1X128.toString()])
   pool.feeGrowthGlobal0X128 = feeGrowthGlobal0X128 as BigInt
   pool.feeGrowthGlobal1X128 = feeGrowthGlobal1X128 as BigInt
 
   // interval data
+  log.info('updating interval data ...', [])
   let pangolinDayData = updatePangolinDayData(event)
   let poolDayData = updatePoolDayData(event)
   let poolHourData = updatePoolHourData(event)
@@ -415,11 +438,15 @@ export function handleSwap(event: SwapEvent): void {
   let token1DayData = updateTokenDayData(token1 as Token, event)
   let token0HourData = updateTokenHourData(token0 as Token, event)
   let token1HourData = updateTokenHourData(token1 as Token, event)
+  log.info('updating interval data DONE', [])
 
   // update volume metrics
   pangolinDayData.volumeETH = pangolinDayData.volumeETH.plus(amountTotalETHTracked)
+  log.info('pangolinDayData.volumeETH: {}', [pangolinDayData.volumeETH.toString()])
   pangolinDayData.volumeUSD = pangolinDayData.volumeUSD.plus(amountTotalUSDTracked)
+  log.info('pangolinDayData.volumeUSD: {}', [pangolinDayData.volumeUSD.toString()])
   pangolinDayData.feesUSD = pangolinDayData.feesUSD.plus(feesUSD)
+  log.info('pangolinDayData.feesUSD: {}', [pangolinDayData.feesUSD.toString()])
 
   poolDayData.volumeUSD = poolDayData.volumeUSD.plus(amountTotalUSDTracked)
   poolDayData.volumeToken0 = poolDayData.volumeToken0.plus(amount0Abs)
@@ -466,8 +493,11 @@ export function handleSwap(event: SwapEvent): void {
 
   // Update inner vars of current or crossed ticks
   let newTick = pool.tick!
+  log.info('newTick: {}', [newTick.toString()])
   let tickSpacing = feeTierToTickSpacing(pool.feeTier)
+  log.info('tickSpacing: {}', [tickSpacing.toString()])
   let modulo = newTick.mod(tickSpacing)
+  log.info('modulo: {}', [modulo.toString()])
   if (modulo.equals(BI_0)) {
     // Current tick is initialized and needs to be updated
     loadTickUpdateFeeVarsAndSave(newTick.toI32(), event)
@@ -478,6 +508,7 @@ export function handleSwap(event: SwapEvent): void {
     .abs()
     .div(tickSpacing)
 
+  log.info('loading tick updates ...', [])
   if (numIters.gt(BigInt.fromI32(100))) {
     // In case more than 100 ticks need to be updated ignore the update in
     // order to avoid timeouts. From testing this behavior occurs only upon
@@ -495,6 +526,7 @@ export function handleSwap(event: SwapEvent): void {
       loadTickUpdateFeeVarsAndSave(i.toI32(), event)
     }
   }
+  log.info('loading tick updates DONE', [])
 }
 
 export function handleFlash(event: FlashEvent): void {
