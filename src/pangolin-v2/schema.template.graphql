@@ -305,7 +305,7 @@ type FarmReward @entity {
   id: ID!
   rewarder: FarmRewarder
   token: Token!
-  multiplier: BigInt
+  multiplier: BigInt!
 }
 type User @entity {
   id: ID!
