@@ -8,10 +8,6 @@
     "codegen": "graph codegen",
     "build": "graph codegen && graph build",
 
-    "create": "graph create --node https://graph.pangolin.network/admin",
-    "remove": "graph remove --node https://graph.pangolin.network/admin",
-    "deploy": "graph deploy --node https://graph.pangolin.network/admin --ipfs https://graph.pangolin.network/ipfs",
-
     "create:avalanche": "graph create --node https://graph-avalanche.pangolin.network/admin",
     "remove:avalanche": "graph remove --node https://graph-avalanche.pangolin.network/admin",
     "deploy:avalanche": "graph deploy --node https://graph-avalanche.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
