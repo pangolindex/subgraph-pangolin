@@ -1,0 +1,34 @@
+{
+  "network": "skale-bellatrix-testnet",
+  "WETH": "0x4CBEC9728A6Bc806B5B2FD9E65892D51E6805611",
+  "PNG": "0xcCFb97CE3239c8cb2731a92E984dB1702b74fDC2",
+  "Factory": {
+    "address": "0x799b54862a9c2740dE61954B4D9eAA9eE604D9A9",
+    "startBlock": 925794
+  },
+  "NonfungiblePositionManager": {
+    "address": "0xC49EdE699A72f1A10d4757D381b049408914CC72",
+    "startBlock": 925803
+  },
+  "LiquidityThresholdETH": "10",
+  "StablePools": [
+
+  ],
+  "WhitelistTokens": [
+
+  ],
+  "StaticTokens": [
+    {
+      "address": "0x4CBEC9728A6Bc806B5B2FD9E65892D51E6805611",
+      "symbol": "WsFUEL",
+      "name": "Wrapped sFUEL",
+      "decimals": 18
+    },
+    {
+      "address": "0xcCFb97CE3239c8cb2731a92E984dB1702b74fDC2",
+      "symbol": "SPNG",
+      "name": "Pangolin (SPNG)",
+      "decimals": 18
+    }
+  ]
+}

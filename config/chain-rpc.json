@@ -1,0 +1,11 @@
+{
+  "avalanche": "https://api.avax.network/ext/bc/C/rpc",
+  "coston": "https://coston-api.flare.network/ext/bc/C/rpc",
+  "coston2": "https://coston2-api.flare.network/ext/bc/C/rpc",
+  "evmos-testnet": "https://eth.bd.evmos.dev:8545",
+  "evmos": "https://eth.bd.evmos.org:8545",
+  "flare": "https://flare-api.flare.network/ext/C/rpc",
+  "fuji": "https://api.avax-test.network/ext/bc/C/rpc",
+  "songbird": "https://sgb.ftso.com.au/ext/bc/C/rpc",
+  "skale-bellatrix-testnet": "https://staging-fast-active-bellatrix.explorer.staging-v3.skalenodes.com"
+}
