@@ -4,9 +4,14 @@
 
 Subgraphs are populated from the following directories and naming conventions:
 
-- `./config/{subgraph}/{chain}.json`: This config directory contains all subgraph configuration for respective chains.
-- `./src/{subgraph}/`: `src` directory contains actual source code for subgraph indexing. 
--  `./abis/{subgraph}/`: This directory contains abis for each subgraph
+1) Chain-wise configuration .json file with their respective subgraph:
+* `./config/{subgraph}/{chain}.json`
+
+2) Subgraphs have their template file, graphql:
+* `./src/{subgraph}/`
+
+3) Subgraph abis file:
+* `./abis/{subgraph}/`
 
 ## Local Development
 
@@ -44,13 +49,14 @@ It will also create docker-compose.yml from the template.
    _ex: `yarn run deploy:local avalanche/pangolin-v2`_
 
 
-## How to Add New Chain
+## Add New Chain
 
-- Add chain-wise configuration .json file for the subgraph directory `./config/{subgraph}/{chain}.json` 
-- To get the Contract Address, we can find it from the SDK. 
-- To get the block number, use the respective explorer to search for the contract address.
+1) Add chain-wise configuration .json file for the subgraph directory:
+* `./config/{subgraph}/{chain}.json`
 
-## Checking Running Subgraph Health in local
+To get the Contract Address, we can find it from the SDK. To get the block number, use the respective explorer to search for the contract address.
+
+## Checking Running Subgraph Health
 
 Run http://localhost:8030/graphql.
 
@@ -88,7 +94,7 @@ Run http://localhost:8030/graphql.
  ```
 
 
-## Deployment
+## Development
 
 1) Create files from templates
     ```bash
