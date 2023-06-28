@@ -7,5 +7,5 @@
   "flare": "https://flare-api.flare.network/ext/C/rpc",
   "fuji": "https://api.avax-test.network/ext/bc/C/rpc",
   "songbird": "https://sgb.ftso.com.au/ext/bc/C/rpc",
-  "skale-bellatrix": "https://staging-fast-active-bellatrix.explorer.staging-v3.skalenodes.com"
+  "skale-bellatrix": "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix"
 }
