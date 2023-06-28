@@ -1,5 +1,5 @@
 {
-  "network": "skale-bellatrix-testnet",
+  "network": "skale-bellatrix",
   "TrackedAccounts": [
     "0xaa7815897586708c157b829300af34c508445e8f",
     "0xe688399009a1c283fad889d3cedf6fff4d685d51"

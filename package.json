@@ -32,9 +32,9 @@
     "remove:evmos-test2": "graph remove --node https://graph-evmos-test2.pangolin.network/admin",
     "deploy:evmos-test2": "graph deploy --node https://graph-evmos-test2.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
 
-    "create:skale-bellatrix-testnet": "graph create --node https://graph-skale-bellatrix.pangolin.network/admin",
-    "remove:skale-bellatrix-testnet": "graph remove --node https://graph-skale-bellatrix.pangolin.network/admin",
-    "deploy:skale-bellatrix-testnet": "graph deploy --node https://graph-skale-bellatrix.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
+    "create:skale-bellatrix": "graph create --node https://graph-skale-bellatrix.pangolin.network/admin",
+    "remove:skale-bellatrix": "graph remove --node https://graph-skale-bellatrix.pangolin.network/admin",
+    "deploy:skale-bellatrix": "graph deploy --node https://graph-skale-bellatrix.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
 
     "create:local": "graph create --node http://localhost:8020",
     "remove:local": "graph remove --node http://localhost:8020",
