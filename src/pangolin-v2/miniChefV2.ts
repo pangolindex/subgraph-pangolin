@@ -24,13 +24,18 @@ import { PNG_ADDRESS } from "./helpers.output";
 import { ADDRESS_ZERO, BD_0, BI_0, BI_1 } from "../constants";
 
 export function handlePoolAdded(event: PoolAdded): void {
-  log.info("handlePoolAdded==============event.address" + event.address.toString(), []);
   log.info(
-    "handlePoolAdded==============event.params.pid" + event.params.pid.toString(),
+    "handlePoolAdded==============event.address" + event.address.toString(),
     []
   );
   log.info(
-    "handlePoolAdded==============event.params.lpToken" + event.params.lpToken.toString(),
+    "handlePoolAdded==============event.params.pid" +
+      event.params.pid.toString(),
+    []
+  );
+  log.info(
+    "handlePoolAdded==============event.params.lpToken" +
+      event.params.lpToken.toString(),
     []
   );
   log.info(
@@ -184,19 +189,33 @@ function createFarm(
 ): void {
   let minichefKey = chef.toHexString();
 
+  log.info("createFarm==============minichefKey" + minichefKey, []);
+
   let minichef = Minichef.load(minichefKey);
   let totalAllocPoint = BI_0;
   if (minichef !== null) {
+    log.info("createFarm==============found MInichef", []);
+
     totalAllocPoint = minichef.totalAllocPoint.plus(allocPoint);
   } else {
+    log.info("createFarm==============not found MInichef", []);
+
     totalAllocPoint = totalAllocPoint.plus(allocPoint);
   }
   createUpdateMiniChef(minichefKey, BI_0, totalAllocPoint, BI_0);
 
   let farmKey = chef.toHexString() + "-" + pid.toHexString();
+
+  log.info("createFarm==============farmKey" + farmKey, []);
+
   let rewarderId = rewarderAddress.toHexString() + "-" + pid.toHexString();
+
+  log.info("createFarm==============rewarderId" + rewarderId, []);
+
   let farm = Farm.load(farmKey);
   if (farm === null) {
+    log.info("createFarm==============not found farm", []);
+
     farm = new Farm(farmKey);
     farm.chefAddress = chef;
     farm.pid = pid;
@@ -210,6 +229,8 @@ function createFarm(
     let pairData = Pair.load(pair.toHexString());
 
     if (!!pairData) {
+      log.info("createFarm============== found pairData", []);
+
       farm.pair = pairData.id;
     }
 
@@ -235,26 +256,34 @@ function createUpdateMiniChef(
   totalAllocPoint: BigInt = BI_0,
   rewardPerSecond: BigInt = BI_0
 ): void {
-
-    log.info("createUpdateMiniChef==============minichefKey" + minichefKey, []);
+  log.info("createUpdateMiniChef==============minichefKey" + minichefKey, []);
 
   let minichef = Minichef.load(minichefKey);
 
   if (minichef !== null) {
+    log.info("createUpdateMiniChef==============found MInichef", []);
     if (rewardsExpiration !== BI_0) {
+      log.info("createUpdateMiniChef==============found rewardsExpiration", []);
+
       minichef.rewardsExpiration = rewardsExpiration;
     }
 
     if (totalAllocPoint !== BI_0) {
+      log.info("createUpdateMiniChef==============found totalAllocPoint", []);
+
       minichef.totalAllocPoint = totalAllocPoint;
     }
 
     if (rewardPerSecond !== BI_0) {
+      log.info("createUpdateMiniChef==============found rewardPerSecond", []);
+
       minichef.rewardPerSecond = rewardPerSecond;
     }
 
     minichef.save();
   } else {
+    log.info("createUpdateMiniChef==============not found MInichef", []);
+
     let minichef = new Minichef(minichefKey);
     minichef.rewardsExpiration = rewardsExpiration;
     minichef.totalAllocPoint = totalAllocPoint;
@@ -272,8 +301,13 @@ function createStakingPosition(
     .toHexString()
     .concat("-")
     .concat(user.toHexString());
+
+  log.info("createStakingPosition==============id" + id, []);
+
   let lp = FarmingPosition.load(id);
   if (lp === null) {
+    log.info("createStakingPosition==============not found lp", []);
+
     lp = new FarmingPosition(id);
     lp.stakedTokenBalance = BI_0;
     lp.farm = farmKey;
@@ -292,6 +326,8 @@ function createUpdateRewarder(rewarderId: string, farmKey: string): void {
 
   let farmRewarder = FarmRewarder.load(rewarderId);
   if (farmRewarder === null) {
+    log.info("createUpdateRewarder==============not found farmRewarder", []);
+
     farmRewarder = new FarmRewarder(rewarderId);
     farmRewarder.farm = farmKey;
   }
@@ -304,6 +340,9 @@ export function createUpdateFarmRewards(
   pid: BigInt
 ): void {
   let rewarderId = rewarderAddress.toHexString() + "-" + pid.toHexString();
+
+  log.info("createUpdateFarmRewards==============rewarderId" + rewarderId, []);
+
   let farmRewarder = FarmRewarder.load(rewarderId);
 
   if (farmRewarder === null) return;
@@ -315,13 +354,29 @@ export function createUpdateFarmRewards(
   createFarmReward(defaultRewardKey, PNG_ADDRESS, BI_1, rewarderId);
 
   if (rewarderAddress.toHexString() != ADDRESS_ZERO) {
+    log.info(
+      "createUpdateFarmRewards==============rewarderAddress is not zero address",
+      []
+    );
+
     let rewardTokens = _fetchRewardTokens(rewarderAddress);
     let multipliers = _fetchRewardMultipliers(rewarderAddress);
 
     if (Array.isArray(rewardTokens)) {
+      log.info(
+        "createUpdateFarmRewards==============rewardTokens is isArray",
+        []
+      );
+
       for (let i = 0; i < rewardTokens.length; ++i) {
         let rewarderAddrKey = rewarderAddress.toHexString();
         let rewardTokensKey = rewardTokens[i].toHexString();
+
+        log.info(
+          "createUpdateFarmRewards==============rewarderAddrKey" +
+            rewarderAddrKey,
+          []
+        );
 
         let rewardKey =
           rewarderAddrKey +
@@ -363,8 +418,12 @@ function createFarmReward(
   rewarderId: string
 ): void {
   let token = Token.load(tokenAddress)!;
+  log.info("createFarmReward==============tokenAddress" + tokenAddress, []);
+
+  log.info("createFarmReward==============token -id" + token.id, []);
 
   let reward = new FarmReward(rewardKey);
+
   reward.token = token.id;
   reward.multiplier = multiplier;
   reward.rewarder = rewarderId;
