@@ -3,11 +3,92 @@
 ## Directories
 
 Subgraphs are populated from the following directories and naming conventions:
-* `./config/{subgraph}/{chain}.json`
-* `./src/{subgraph}/`
-* `./abis/{subgraph}/`
 
-## Development
+- `./config/{subgraph}/{chain}.json`: This config directory contains all subgraph configuration for respective chains.
+- `./src/{subgraph}/`: `src` directory contains actual source code for subgraph indexing. 
+-  `./abis/{subgraph}/`: This directory contains abis for each subgraph
+
+## Local Development
+
+Follow the following steps to run the subgraph locally:
+
+1) Create files from templates:
+    ```bash
+    yarn run template {chain}/{subgraph}
+    ```
+    _ex: `yarn run template avalanche/pangolin-v2`_
+
+It will also create docker-compose.yml from the template. 
+
+2) Create entities:
+    ```bash
+    yarn run codegen
+    ```
+3) Compile subgraph:
+    ```bash
+    yarn run build
+    ```
+4) Start Docker:
+    ```bash
+    docker-compose up --build
+    ```
+5) Create subgraph:
+    ```bash
+    yarn run create:local {chain}/{subgraph}
+    ```
+    _ex: `yarn run create:local avalanche/pangolin-v2`_
+6) Deploy subgraph:
+    ```bash
+    yarn run deploy:local {chain}/{subgraph}
+    ```
+   _ex: `yarn run deploy:local avalanche/pangolin-v2`_
+
+
+## How to Add New Chain
+
+- Add chain-wise configuration .json file for the subgraph directory `./config/{subgraph}/{chain}.json` 
+- To get the Contract Address, we can find it from the SDK. 
+- To get the block number, use the respective explorer to search for the contract address.
+
+## Checking Running Subgraph Health in local
+
+Run http://localhost:8030/graphql.
+
+```bash
+{
+  indexingStatuses {
+    subgraph
+    health
+  }
+  indexingStatusesForSubgraphName(
+    subgraphName: "blocks"
+  ) {
+    subgraph
+    synced
+    nonFatalErrors {
+      message
+    }
+    fatalError {
+      block {
+        number
+      }
+      message
+    }
+    chains {
+      latestBlock {
+        number
+        hash
+      }
+      chainHeadBlock {
+        number
+      }
+    }
+  }
+}
+ ```
+
+
+## Deployment
 
 1) Create files from templates
     ```bash
