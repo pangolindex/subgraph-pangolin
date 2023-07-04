@@ -5,6 +5,11 @@ description: Pangolin v2 operations
 repository: https://github.com/pangolindex/subgraph-pangolin
 schema:
   file: ./schema.graphql
+# features:
+#   - grafting # feature name
+# graft:
+#   base: QmTdrtjHKi3kFkBTcayXZg7cVZvWmrbZCW9jefRbSrxAtM # subgraph ID of base subgraph
+#   block: 17920000 # block number
 dataSources:
   - kind: ethereum/contract
     name: Factory
