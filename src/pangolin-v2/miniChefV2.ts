@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { BigInt, Address, log } from "@graphprotocol/graph-ts";
+import { BigInt, log, Bytes, Address } from "@graphprotocol/graph-ts";
 import {
   Farm,
   Minichef,
@@ -25,22 +25,22 @@ import { ADDRESS_ZERO, BD_0, BI_0, BI_1 } from "../constants";
 
 export function handlePoolAdded(event: PoolAdded): void {
   log.info(
-    "handlePoolAdded==============event.address" + event.address.toString(),
+    "handlePoolAdded==============event.address" + event.address.toHexString(),
     []
   );
   log.info(
     "handlePoolAdded==============event.params.pid" +
-      event.params.pid.toString(),
+      event.params.pid.toHexString(),
     []
   );
   log.info(
     "handlePoolAdded==============event.params.lpToken" +
-      event.params.lpToken.toString(),
+      event.params.lpToken.toHexString(),
     []
   );
   log.info(
     "handlePoolAdded==============event.params.rewarder" +
-      event.params.rewarder.toString(),
+      event.params.rewarder.toHexString(),
     []
   );
 
@@ -57,17 +57,31 @@ export function handleDeposit(event: Deposit): void {
   let farmKey =
     event.address.toHexString() + "-" + event.params.pid.toHexString();
 
+  log.info("handleDeposit==============farmKey" + farmKey, []);
+
   let farm = Farm.load(farmKey)!;
 
   farm.balance = farm.balance.plus(event.params.amount);
 
   farm.save();
 
+  log.info(
+    "handleDeposit==============createUser==event.params.to" +
+      event.params.to.toHexString(),
+    []
+  );
+
   // user stats
   createUser(event.params.to);
 
+  log.info(
+    "handleDeposit==============farm.pairAddress" +
+      farm.pairAddress.toHexString(),
+    []
+  );
+
   let toUserStakingPosition = createStakingPosition(
-    farm.pairAddress as Address,
+    farm.pairAddress,
     event.params.to,
     farmKey
   );
@@ -81,17 +95,31 @@ export function handleWithdraw(event: Withdraw): void {
   let farmKey =
     event.address.toHexString() + "-" + event.params.pid.toHexString();
 
+  log.info("handleWithdraw==============farmKey" + farmKey, []);
+
   let farm = Farm.load(farmKey)!;
 
   farm.balance = farm.balance.minus(event.params.amount);
 
   farm.save();
 
+  log.info(
+    "handleWithdraw==============createUser==event.params.to" +
+      event.params.to.toHexString(),
+    []
+  );
+
   // user stats
   createUser(event.params.to);
 
+  log.info(
+    "handleWithdraw==============farm.pairAddress" +
+      farm.pairAddress.toHexString(),
+    []
+  );
+
   let fromUserStakingPosition = createStakingPosition(
-    farm.pairAddress as Address,
+    farm.pairAddress,
     event.params.user,
     farmKey
   );
@@ -104,15 +132,30 @@ export function handleWithdraw(event: Withdraw): void {
 export function handleEmergencyWithdraw(event: EmergencyWithdraw): void {
   let farmKey =
     event.address.toHexString() + "-" + event.params.pid.toHexString();
+
+  log.info("handleEmergencyWithdraw==============farmKey" + farmKey, []);
+
   let farm = Farm.load(farmKey)!;
 
   farm.balance = farm.balance.minus(event.params.amount);
 
+  log.info(
+    "handleEmergencyWithdraw==============createUser==event.params.to" +
+      event.params.to.toHexString(),
+    []
+  );
+
   // user stats
   createUser(event.params.to);
 
+  log.info(
+    "handleEmergencyWithdraw==============farm.pairAddress" +
+      farm.pairAddress.toHexString(),
+    []
+  );
+
   let fromUserStakingPosition = createStakingPosition(
-    farm.pairAddress as Address,
+    farm.pairAddress,
     event.params.user,
     farmKey
   );
@@ -129,14 +172,26 @@ export function handlePoolSet(event: PoolSet): void {
   let pid = event.params.pid;
   let rewarder = event.params.rewarder;
   let minichefKey = event.address.toHexString();
+
+  log.info("handlePoolSet==============minichefKey" + minichefKey, []);
+
   let farmKey = minichefKey + "-" + pid.toHexString();
+
+  log.info("handlePoolSet==============farmKey" + farmKey, []);
+
   let rewarderId = rewarder.toHexString() + "-" + pid.toHexString();
+
+  log.info("handlePoolSet==============rewarderId" + rewarderId, []);
 
   let farm = Farm.load(farmKey);
 
   if (farm !== null) {
+    log.info("handlePoolSet==============Farm Exits", []);
+
     // if we want to overwrite then update rewarder in farm
     if (overwrite) {
+      log.info("handlePoolSet==============overwrite", []);
+
       createUpdateRewarder(rewarderId, farmKey);
       farm.rewarder = rewarderId;
     }
@@ -145,6 +200,8 @@ export function handlePoolSet(event: PoolSet): void {
     let totalAllocPoint = BI_0;
 
     if (minichef !== null) {
+      log.info("handlePoolSet==============minichef Exits", []);
+
       totalAllocPoint = minichef.totalAllocPoint.plus(
         allocPoint.minus(farm.allocPoint)
       );
@@ -229,7 +286,7 @@ function createFarm(
     let pairData = Pair.load(pair.toHexString());
 
     if (!!pairData) {
-      log.info("createFarm============== found pairData", []);
+      log.info("createFarm============== found pairData" + pairData.id, []);
 
       farm.pair = pairData.id;
     }
@@ -293,7 +350,7 @@ function createUpdateMiniChef(
 }
 
 function createStakingPosition(
-  exchange: Address,
+  exchange: Bytes,
   user: Address,
   farmKey: string
 ): FarmingPosition {
@@ -388,7 +445,7 @@ export function createUpdateFarmRewards(
         let multiplier = multipliers[i];
 
         log.info(
-          "createUpdateFarmRewards==============rewardKey" + rewardKey,
+          "createUpdateFarmRewards===================rewardKey" + rewardKey,
           []
         );
         log.info(
@@ -398,7 +455,7 @@ export function createUpdateFarmRewards(
         );
         log.info(
           "createUpdateFarmRewards==============multiplier" +
-            multiplier.toString(),
+            multiplier.toHexString(),
           []
         );
         log.info(
