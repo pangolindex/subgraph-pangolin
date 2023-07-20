@@ -20,7 +20,12 @@ import {
   LogRewardsExpiration,
 } from "../../generated/MiniChefV2/MiniChefV2";
 import { RewarderViaMultiplier } from "../../generated/MiniChefV2/RewarderViaMultiplier";
-import { PNG_ADDRESS } from "./helpers.output";
+import {
+  PNG_ADDRESS,
+  _fetchTokenSymbol,
+  _fetchTokenName,
+  _fetchTokenDecimals,
+} from "./helpers.output";
 import { ADDRESS_ZERO, BD_0, BI_0, BI_1 } from "../constants";
 
 export function handlePoolAdded(event: PoolAdded): void {
@@ -474,17 +479,27 @@ function createFarmReward(
   multiplier: BigInt,
   rewarderId: string
 ): void {
-  let token = Token.load(tokenAddress)!;
   log.info("createFarmReward==============tokenAddress" + tokenAddress, []);
 
-  log.info("createFarmReward==============token -id" + token.id, []);
+  let token = Token.load(tokenAddress);
 
-  let reward = new FarmReward(rewardKey);
+  if (token === null) {
+    log.info("createFarmReward==============token is null", []);
 
-  reward.token = token.id;
-  reward.multiplier = multiplier;
-  reward.rewarder = rewarderId;
-  reward.save();
+    let tokenAddr = Address.fromString(tokenAddress);
+    token = _createToken(tokenAddr);
+  }
+
+  if (token) {
+    log.info("createFarmReward==============token -id" + token.id, []);
+
+    let reward = new FarmReward(rewardKey);
+
+    reward.token = token.id;
+    reward.multiplier = multiplier;
+    reward.rewarder = rewarderId;
+    reward.save();
+  }
 }
 
 function _fetchRewardTokens(rewarderAddress: Address): Array<Address> {
@@ -508,4 +523,38 @@ function _fetchRewardMultipliers(rewarderAddress: Address): Array<BigInt> {
   }
 
   return totalRewardMultiplierValue as Array<BigInt>;
+}
+
+function _createToken(tokenAddress: Address): Token | null {
+  log.info(
+    "_createToken=============tokenAddress" + tokenAddress.toHexString(),
+    []
+  );
+
+  let token = Token.load(tokenAddress.toHexString());
+  if (token === null) {
+    log.info("_createToken=============token null ", []);
+
+    token = new Token(tokenAddress.toHexString());
+    token.symbol = _fetchTokenSymbol(tokenAddress);
+    token.name = _fetchTokenName(tokenAddress);
+
+    let decimals = _fetchTokenDecimals(tokenAddress);
+    if (decimals === null) {
+      log.debug("null decimals for token", []);
+      return null;
+    }
+
+    token.decimals = decimals;
+    token.derivedETH = BD_0;
+    token.derivedUSD = BD_0;
+    token.tradeVolume = BD_0;
+    token.tradeVolumeUSD = BD_0;
+    token.untrackedVolumeUSD = BD_0;
+    token.totalLiquidity = BD_0;
+    token.txCount = BI_0;
+
+    token.save();
+  }
+  return token;
 }

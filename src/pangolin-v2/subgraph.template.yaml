@@ -8,7 +8,7 @@ schema:
 # features:
 #   - grafting # feature name
 # graft:
-#   base: QmTdrtjHKi3kFkBTcayXZg7cVZvWmrbZCW9jefRbSrxAtM # subgraph ID of base subgraph
+#   base: QmcfwRC9m3fi1ijzLoYAUzv4VEubrxEpDdSRSK9zq2DPtF # subgraph ID of base subgraph
 #   block: 17920000 # block number
 dataSources:
   - kind: ethereum/contract
