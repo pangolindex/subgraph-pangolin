@@ -60,6 +60,14 @@ dataSources:
           file: ./abis/pangolin-v2/MiniChefV2.json
         - name: RewarderViaMultiplier
           file: ./abis/pangolin-v2/RewarderViaMultiplier.json
+        - name: Factory
+          file: ./abis/pangolin-v2/PangolinFactory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC20SymbolBytes
+          file: ./abis/ERC20SymbolBytes.json
+        - name: ERC20NameBytes
+          file: ./abis/ERC20NameBytes.json
       eventHandlers:
         - event: PoolAdded(indexed uint256,uint256,indexed address,indexed address)
           handler: handlePoolAdded
