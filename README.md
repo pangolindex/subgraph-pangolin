@@ -114,6 +114,21 @@ Run http://localhost:8030/graphql.
     ```
    _ex: `yarn run deploy:avalanche avalanche/pangolin-v2`_
 
+
+
+## CHAIN  - SUBGRAPH - SUBGRAPH ID
+
+| chain            | subgraph name                        | subgraph id                          |
+| ---------------- | ----------------------------------- | ------------------------------------ |
+| Avalanche        | avalanche/pangolin-v2                | QmTdrtjHKi3kFkBTcayXZg7cVZvWmrbZCW9jefRbSrxAtM |
+|                  | avalanche/pangolin-elixir            | QmbhLwg2rSzS7XEmx5HDFCmesPg3p4Not1VR9biiWprBan |
+| Fuji             | fuji/pangolin-elixir                 | QmVqjmENnrkEYyZzLS34v1uTfEyM1Emkxvd68V7qVcgdon |
+| skale-bellatrix  | blocks                               | QmXMeK13n4gqqvKS7Mi1RiU8rm92LWjLwcFkqJMNKMifXx |
+| skale-bellatrix  | skale-bellatrix/pangolin-v2          | QmNdGgeykYgP2DHukwdC2j3Eqh5PKpZ7MTTXEVnmDiegWy |
+| skale-bellatrix  | skale-bellatrix/pangolin-elixir      | QmZCJdEcCRDgCiQVSCCCTGr8MGAnms1889Zq1Br2eEmvi5 |
+| skale-bellatrix  | skale-bellatrix/stakingPositions     | Qmc4zTsteT6pobAR6SD3qajJiPXz5SDiPm9wWRcJk2J7ua |
+
+
 ## DevOps - Kubernetes
 
 Subgraphs are deployed into a kubernetes environment grouped by logical chain and sharing one 
