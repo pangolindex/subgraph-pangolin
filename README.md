@@ -6,7 +6,7 @@ Subgraphs are populated from the following directories and naming conventions:
 
 - `./config/{subgraph}/{chain}.json`: This config directory contains all subgraph configuration for respective chains.
 - `./src/{subgraph}/`: `src` directory contains actual source code for subgraph indexing. 
--  `./abis/{subgraph}/`: This directory contains abis for each subgraph
+- `./abis/{subgraph}/`: This directory contains abis for each subgraph
 
 ## Local Development
 

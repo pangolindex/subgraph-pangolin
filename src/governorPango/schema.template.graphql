@@ -1,0 +1,29 @@
+type Proposal @entity {
+  id: ID!
+  # Current number of votes in favor of this proposal
+  forVotes: BigInt!
+  # Current number of votes in opposition to this proposal
+  againstVotes: BigInt!
+  # The timestamp at which voting begins: holders must delegate their votes prior to this time
+  startTime: BigInt!
+  # The timestamp at which voting ends: votes must be cast prior to this time
+  endTime: BigInt!
+  # The timestamp that the proposal will be available for execution, set once the vote succeeds
+  eta: BigInt!
+  # Flag marking whether the proposal has been executed
+  executed: Boolean!
+  # Flag marking whether the proposal has been canceled
+  canceled: Boolean!
+  
+  # the ordered list of target addresses for calls to be made
+  targets: [Bytes!]
+  # The ordered list of values (i.e. msg.value) to be passed to the calls to be made
+  values: [BigInt!]
+  # The ordered list of function signatures to be called
+  signatures: [String!]
+  # The ordered list of calldata to be passed to each call
+  calldatas: [Bytes!]
+
+  # Friendly description of what the proposal aims to accomplish
+  description: String!
+}
