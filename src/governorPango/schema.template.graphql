@@ -9,7 +9,7 @@ type Proposal @entity {
   # The timestamp at which voting ends: votes must be cast prior to this time
   endTime: BigInt!
   # The timestamp that the proposal will be available for execution, set once the vote succeeds
-  eta: BigInt!
+  eta: BigInt
   # Flag marking whether the proposal has been executed
   executed: Boolean!
   # Flag marking whether the proposal has been canceled
