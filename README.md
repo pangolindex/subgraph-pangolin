@@ -22,7 +22,7 @@ Subgraphs are populated from the following directories and naming conventions:
 
 ## Deployed Subgraph
 
-| CHIAN           | SUBGRAPH_NAME                    | SUBGRAPH_ID                                    |
+| CHAIN           | SUBGRAPH_NAME                    | SUBGRAPH_ID                                    |
 | --------------- | -------------------------------- | ---------------------------------------------- |
 | Avalanche       | avalanche/pangolin-v2            | QmcLmyXjxQpMjmoyYyLTNyaauekqzLBvvw9GE7yHGMvWfp |
 |                 | avalanche/pangolin-elixir        | QmbhLwg2rSzS7XEmx5HDFCmesPg3p4Not1VR9biiWprBan |
