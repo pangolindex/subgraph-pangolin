@@ -69,7 +69,7 @@ Above last 2 steps are for avalanche group. You can find commands for other grou
 - To get the Contract Address, we can find it from the SDK.
 - To get the block number, use the respective explorer to search for the contract address.
 
-## Checking Running Subgraph Health in local
+## Check running subgraph health
 
 Run `<BASE_URL>/graphql`. You can find `BASE_URL` from above table.
 
