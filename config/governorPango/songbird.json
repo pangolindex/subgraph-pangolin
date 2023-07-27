@@ -1,0 +1,7 @@
+{
+  "network": "songbird",
+  "GovernorPango": {
+    "address": "0x918549b5da5a51d67066b1c26c425cd1b36d2fd7",
+    "startBlock": 38486873
+  }
+}
