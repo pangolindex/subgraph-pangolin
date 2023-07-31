@@ -24,17 +24,18 @@ Subgraphs are populated from the following directories and naming conventions:
 
 | CHAIN           | SUBGRAPH_NAME                    | SUBGRAPH_ID                                    |
 | --------------- | -------------------------------- | ---------------------------------------------- |
-| Avalanche       | avalanche/pangolin-v2            | QmcLmyXjxQpMjmoyYyLTNyaauekqzLBvvw9GE7yHGMvWfp |
+| Avalanche       | avalanche/pangolin-v2            | Qmd4zwpvVwJnveCGCeryhNyHzuvZ4TdUbMgDbc8VTv8fj9 |
 |                 | avalanche/pangolin-elixir        | QmbhLwg2rSzS7XEmx5HDFCmesPg3p4Not1VR9biiWprBan |
 |                 | avalanche/blocks                 | QmbFvbSGzV2bYY2wtrRtXMebshcMfMaJM8y5outPbPdUtr |
-|                 | avalanche/governorAlpha          | QmSnhu3xwfTcpVbaAieYp7zokoAeyzDejwRx4m6sHcDWDA |
+|                 | avalanche/governorAlpha          | QmRA2kkrjWLfQco5bBaKJvNkfzkB6q1BJFDnWUaFR4bq5P |
 | Fuji            | fuji/pangolin-elixir             | QmVqjmENnrkEYyZzLS34v1uTfEyM1Emkxvd68V7qVcgdon |
 |                 | fuji/blocks                      | QmW3JiWbHdbguwqKqjGX48hrokWd45dihSvLwa9juo8EpX |
-|                 | fuji/pangolin-v2                 | QmYtVSS24M7VPG7CrVJn222JpLWCsTQ1KtWaSKLF5hwtAJ |
+|                 | fuji/pangolin-v2                 | QmfYw9JcTTvD2WveK39sTR7iiocmS9cmtBPGavRcFn3oWR |
 | skale-bellatrix | blocks                           | QmXMeK13n4gqqvKS7Mi1RiU8rm92LWjLwcFkqJMNKMifXx |
 |                 | skale-bellatrix/pangolin-v2      | QmNdGgeykYgP2DHukwdC2j3Eqh5PKpZ7MTTXEVnmDiegWy |
 |                 | skale-bellatrix/pangolin-elixir  | QmZCJdEcCRDgCiQVSCCCTGr8MGAnms1889Zq1Br2eEmvi5 |
 |                 | skale-bellatrix/stakingPositions | Qmc4zTsteT6pobAR6SD3qajJiPXz5SDiPm9wWRcJk2J7ua |
+
 
 ## Local Development
 
