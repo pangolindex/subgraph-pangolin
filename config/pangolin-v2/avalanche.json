@@ -5,7 +5,7 @@
   "Router": "0xe54ca86531e17ef3616d22ca28b0d458b6c89106",
   "Factory": {
     "address": "0xefa94de7a4656d787667c749f7e1223d71e9fd88",
-    "startBlock": 771980
+    "startBlock": 56877
   },
   "MiniChefV2": {
     "address": "0x1f806f7c8ded893fd3cae279191ad7aa3798e928",
