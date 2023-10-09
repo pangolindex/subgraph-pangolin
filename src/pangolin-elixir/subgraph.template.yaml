@@ -17,13 +17,13 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
-      file: ./src/pangolin-v3/factory.ts
+      file: ./src/pangolin-elixir/factory.ts
       entities:
         - Pool
         - Token
       abis:
         - name: Factory
-          file: ./abis/pangolin-v3/factory.json
+          file: ./abis/pangolin-elixir/factory.json
         - name: ERC20
           file: ./abis/ERC20.json
         - name: ERC20SymbolBytes
@@ -31,7 +31,7 @@ dataSources:
         - name: ERC20NameBytes
           file: ./abis/ERC20NameBytes.json
         - name: Pool
-          file: ./abis/pangolin-v3/pool.json
+          file: ./abis/pangolin-elixir/pool.json
       eventHandlers:
         - event: PoolCreated(indexed address,indexed address,indexed uint24,int24,address)
           handler: handlePoolCreated
@@ -46,17 +46,17 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
-      file: ./src/pangolin-v3/position-manager.ts
+      file: ./src/pangolin-elixir/position-manager.ts
       entities:
         - Pool
         - Token
       abis:
         - name: NonfungiblePositionManager
-          file: ./abis/pangolin-v3/NonfungiblePositionManager.json
+          file: ./abis/pangolin-elixir/NonfungiblePositionManager.json
         - name: Pool
-          file: ./abis/pangolin-v3/pool.json
+          file: ./abis/pangolin-elixir/pool.json
         - name: Factory
-          file: ./abis/pangolin-v3/factory.json
+          file: ./abis/pangolin-elixir/factory.json
         - name: ERC20
           file: ./abis/ERC20.json
       eventHandlers:
@@ -78,15 +78,15 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
-      file: ./src/pangolin-v3/core.ts
+      file: ./src/pangolin-elixir/core.ts
       entities:
         - Pool
         - Token
       abis:
         - name: Pool
-          file: ./abis/pangolin-v3/pool.json
+          file: ./abis/pangolin-elixir/pool.json
         - name: Factory
-          file: ./abis/pangolin-v3/factory.json
+          file: ./abis/pangolin-elixir/factory.json
         - name: ERC20
           file: ./abis/ERC20.json
       eventHandlers:

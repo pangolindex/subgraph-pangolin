@@ -3,12 +3,12 @@
   "WETH": "0xd4949664cd82660aae99bedc034a0dea8a0bd517",
   "PNG": "0xaf5d473b3f8f96a5b21c6bbb97e09b491335acb9",
   "Factory": {
-    "address": "0x56afa30776c1b13b965516560ce0bbad3be5fc91",
-    "startBlock": 19575517
+    "address": "0xaf0f49f7e8084223737a5981a5f5a11101c6e406",
+    "startBlock": 22709254
   },
   "NonfungiblePositionManager": {
-    "address": "0x1ff5c8f2499ea5bc0d2facbd382ca800f9083361",
-    "startBlock": 19575528
+    "address": "0x6d89f74cf03bfd8d2bf623c621af9cc6464e2c0a",
+    "startBlock": 22709301
   },
   "LiquidityThresholdETH": "10",
   "StablePools": [

@@ -1,0 +1,7 @@
+{
+  "network": "coston2",
+  "GovernorPango": {
+    "address": "0xd33dd9e5b928bbd3da23edd5911f6956d7c155a6",
+    "startBlock": 5278944
+  }
+}

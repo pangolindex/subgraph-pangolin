@@ -1,0 +1,7 @@
+{
+  "network": "flare",
+  "GovernorPango": {
+    "address": "0x791aae9f376159e4419d37142cd8e079a2beaf94",
+    "startBlock": 11112686
+  }
+}

@@ -2,20 +2,17 @@
   "network": "avalanche",
   "WETH": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
   "PNG": "0x60781c2586d68229fde47564546784ab3faca982",
-  "Router": "0xe54ca86531e17ef3616d22ca28b0d458b6c89106",
   "Factory": {
-    "address": "0xefa94de7a4656d787667c749f7e1223d71e9fd88",
-    "startBlock": 56877
+    "address": "0x0bd438cb54153c5418e91547de862f21bc143ae2",
+    "startBlock": 31062863
   },
-  "MiniChefV2": {
-    "address": "0x1f806f7c8ded893fd3cae279191ad7aa3798e928",
-    "startBlock": 6987996
+  "NonfungiblePositionManager": {
+    "address": "0xb18a6cf6833130c7a13076d96c7e3784b7f721d1",
+    "startBlock": 31062897
   },
-  "PangoChef": null,
   "LiquidityThresholdETH": "10",
-  "StablePairs": [
-    "0xba09679ab223c6bdaf44d45ba2d7279959289ab0",
-    "0xe28984e1ee8d431346d32bec9ec800efb643eef4"
+  "StablePools": [
+    "0xc79890c726ff34e43e16afa736847900e4fc9c37"
   ],
   "WhitelistTokens": [
     "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
@@ -33,7 +30,7 @@
       "decimals": 18
     },
     {
-      "address": "0xe28984e1ee8d431346d32bec9ec800efb643eef4",
+      "address": "0x60781c2586d68229fde47564546784ab3faca982",
       "symbol": "PNG",
       "name": "Pangolin",
       "decimals": 18

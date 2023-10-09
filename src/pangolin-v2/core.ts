@@ -35,8 +35,10 @@ export function handleTransfer(event: Transfer): void {
         return
     }
 
-    // Skip if when staking/unstaking
-    if (STAKING_DESTINATIONS.includes(eventFromAsHexString) || STAKING_DESTINATIONS.includes(eventToAsHexString)) {
+    if (eventFromAsHexString != ADDRESS_ZERO && STAKING_DESTINATIONS.includes(eventToAsHexString)) {
+        return
+    }
+    if (eventToAsHexString != ADDRESS_ZERO && STAKING_DESTINATIONS.includes(eventFromAsHexString)) {
         return
     }
 
