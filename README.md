@@ -35,7 +35,7 @@ Subgraphs are populated from the following directories and naming conventions:
 |                 | skale-bellatrix/pangolin-v2      | QmNdGgeykYgP2DHukwdC2j3Eqh5PKpZ7MTTXEVnmDiegWy |
 |                 | skale-bellatrix/pangolin-elixir  | QmZCJdEcCRDgCiQVSCCCTGr8MGAnms1889Zq1Br2eEmvi5 |
 |                 | skale-bellatrix/stakingPositions | Qmc4zTsteT6pobAR6SD3qajJiPXz5SDiPm9wWRcJk2J7ua |
-
+| coston          | coston/governorPango             | QmboVJtxrAbGyDaMrBQqLNxAhYrHG9Z96BV8T4arY8FTSt |
 
 ## Local Development
 

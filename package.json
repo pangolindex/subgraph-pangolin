@@ -16,6 +16,10 @@
     "remove:flare": "graph remove --node https://flare.pangolin.network/admin",
     "deploy:flare": "graph deploy --node https://flare.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
 
+    "create:coston": "graph create --node https://flare.pangolin.network/admin",
+    "remove:coston": "graph remove --node https://flare.pangolin.network/admin",
+    "deploy:coston": "graph deploy --node https://flare.pangolin.network/admin --ipfs https://ipfs.pangolin.network",
+
     "create:evmos-main": "graph create --node https://graph-evmos-main.pangolin.network/admin",
     "remove:evmos-main": "graph remove --node https://graph-evmos-main.pangolin.network/admin",
     "deploy:evmos-main": "graph deploy --node https://graph-evmos-main.pangolin.network/admin --ipfs https://graph-evmos-main.pangolin.network/ipfs",
